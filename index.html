@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <div class="container-principal">
+        <!-- Login -->
+        <div class="login contenedor" id="login">
+            <div class="pantalla-login">
+                <form action="">
+                    <h1 class="mb-4">
+                        <i class="bi bi-lock-fill fs-3 lock" style="color : rgb(66, 149, 66)"></i>Ingresa tu clave
+                    </h1>
+                    <input class="rounded  w-100 mb-4" type="text" id="number"/>
+                    <h2 class="mb-4">
+                        Por tu seguridad, usa el teclado del cajero.
+                    </h2>
+                    <input type="button" id="ingresar" value="Ingresar" class="btn btn-success btn-sg w-100 mb-4">
+                </form>
+                <div class="consejo">
+                    <i class="bi bi-eye-slash-fill"></i>
+                    <h2>Por tu seguridad, no dejes que vean tu clave secreta, ni aceptes la ayuda a extraños</h2>
+                </div>
+            </div>
+        </div>
+        <!-- Menu -->
+        <div class="menu contenedor" id="menu">
+            <!-- logo e informacion -->
+            <div class="barra">
+                <div class="logo">
+                    <img src="img/Interbank_logo.svg.png" alt="logo">
+                </div>
+                <div class="informacion">
+                    <div class="grupo-info">
+                        <i class="bi bi-telephone-forward" style="color: rgb(66, 149, 66)"></i>
+                        <a href="">Asistencia: 999 99999</a>
+                    </div>
+                    <div class="grupo-info">
+                        <i class="bi bi-bank" style="color: rgb(66, 149, 66)"></i>
+                        <a href=""># Cajero 0000001</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pantalla">
+                <div class="opciones">
+                    <div class="opcion" id="btnretiro">
+                        <i class="bi bi-cash-stack"></i>
+                        <a href="#retiro">Retira</a>
+                    </div>
+                    <div class="opcion" id="btnconsulta">
+                        <i class="bi bi-piggy-bank-fill"></i>
+                        <a href="#consulta">Consulta</a>
+                    </div>
+                    <div class="opcion" id="btndeposito">
+                        <i class="bi bi-cash-coin"></i>
+                        <a href="#deposito">Deposita</a>
+                    </div>
+                    <div class="opcion">
+                        <i class="bi bi-currency-exchange"></i>
+                        <a href="">Transfiere</a>
+                    </div>
+                    <div class="opcion">
+                        <i class="bi bi-credit-card-fill"></i>
+                        <a href="">Paga</a>
+                    </div>
+                </div>
+
+                <div class="interfaz-usuario">
+                    <!-- Retiro -->
+                    <section class="retiro" id="retiro">
+                        <div class="usuario mb-4">
+                            <h3>Hola Jesús,</h3>
+                            <p>Ingresa o escoja el monto a retirar</p>
+                        </div>
+                        <div class="montos">
+                            <div class="monto-manual">
+                                <form action="">
+                                    <h1 class="mb-4 fs-6">Monto a Retirar</h1>
+                                    <input class="rounded w-60 mb-3" type="text" id="number" />
+                                    <input type="submit" id="submit" value="Retirar" class="btn btn-success w-50 mb-3">
+                                </form>
+                            </div>
+                            <div class="monto-automatico">
+                                <button class="monto-retiro">S/ 20</button>
+                                <button class="monto-retiro">S/ 50</button>
+                                <button class="monto-retiro">S/ 100</button>
+                                <button class="monto-retiro">S/ 150</button>
+                                <button class="monto-retiro">S/ 200</button>
+                                <button class="monto-retiro">S/ 400</button>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Consulta -->
+                    <section class="consulta" id="consulta">
+                        <h3 class="mb-4" style="color:rgb(68, 164, 164)">Consulta</h3>
+                        <div class="saldo">
+                            <h1 class="mb-4 fs-5">Saldo</h1>
+                            <input class="w-60 mb-3" type="text" id="number" readonly />
+                        </div>
+                    </section>
+                    <!-- Deposita -->
+                    <section class="deposito" id="deposito">
+                        <h3 style="color:rgb(68, 164, 164)">Depositar</h3>
+                        <p class="mb-4">Efectivo</p>
+                        <div class="saldo-deposito">
+                            <form action="">
+                                <h1 class="mb-4 fs-5">Ingresa el Monto</h1>
+                                <div class="input-prefix">
+                                    <span class="prefijo">S/</span>
+                                    <input class="w-60 mb-3 dinero" type="text" id="number" />
+                                </div>
+                                <input type="submit" id="submit" value="Depositar" class="btn btn-success w-50 mb-3">
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <div class="salir">
+                    <i class="bi bi-box-arrow-right" style="color: black"></i>
+                    <input type="button" id="salir"" value="Salir" class="btn btn-danger">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
