@@ -13,14 +13,46 @@
 
 <body>
     <div class="container-principal">
+        <!-- Ingresar tarjeta -->
+        <div class="cajero contenedor" id="cajero">
+            <div class="barra">
+                <div class="logo-cajero">
+                    <img src="img/globalnet.png" alt="logo">
+                </div>
+            </div>
+            <div class="info-cajero">
+                <h1 class="info">EN <strong>TODO</strong> EL PAÍS</h1>
+                <div class="mundo">
+                    <img src="img/tierra.png" alt="">
+                </div>
+                <div class="insertar-tarjeta">
+                    <button id="btninsertar">Inserte Su Tarjeta</button>
+                </div>
+            </div>
+        </div>
         <!-- Login -->
         <div class="login contenedor" id="login">
+            <div class="barra">
+                <div class="logo">
+                    <img src="img/Interbank_logo.svg.png" alt="logo">
+                </div>
+                <div class="informacion">
+                    <div class="grupo-info">
+                        <i class="bi bi-telephone-forward" style="color: rgb(66, 149, 66)"></i>
+                        <a href="">Asistencia: 999 99999</a>
+                    </div>
+                    <div class="grupo-info">
+                        <i class="bi bi-bank" style="color: rgb(66, 149, 66)"></i>
+                        <a href=""># Cajero 0000001</a>
+                    </div>
+                </div>
+            </div>
             <div class="pantalla-login">
                 <form action="">
                     <h1 class="mb-4">
                         <i class="bi bi-lock-fill fs-3 lock" style="color : rgb(66, 149, 66)"></i>Ingresa tu clave
                     </h1>
-                    <input class="rounded  w-100 mb-4" type="text" id="number"/>
+                    <input class="rounded  w-100 mb-4" type="password" id="number"/>
                     <h2 class="mb-4">
                         Por tu seguridad, usa el teclado del cajero.
                     </h2>
@@ -104,7 +136,10 @@
                         <h3 class="mb-4" style="color:rgb(68, 164, 164)">Consulta</h3>
                         <div class="saldo">
                             <h1 class="mb-4 fs-5">Saldo</h1>
+                            <div class="input-prefix">
+                                <span class="prefijo">S/</span>
                             <input class="w-60 mb-3" type="text" id="number" readonly />
+                            </div>
                         </div>
                     </section>
                     <!-- Deposita -->
@@ -124,12 +159,17 @@
                     </section>
                 </div>
                 <div class="salir">
+                    <input type="button" id="salir" value="Sacar Tarjeta" class="btn btn-danger">
                     <i class="bi bi-box-arrow-right" style="color: black"></i>
-                    <input type="button" id="salir"" value="Salir" class="btn btn-danger">
                 </div>
             </div>
         </div>
     </div>
+    <div id="loader" class="loader-container">
+        <div class="loader-spinner"></div>
+    <p>Cargando...</p>
+</div>
+    <script src="logica_cajero.js"></script>
     <script src="main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

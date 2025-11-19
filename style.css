@@ -26,11 +26,63 @@ html{
     border: 2px solid black;
     border-radius: 8px;
 }
+/* Insertar Tarjeta */
+.cajero{
+    padding: 20px;
+    display: block;
+    background-color: #fbcc0d;
+}
+
+.logo-cajero img{
+    width: 80%;
+}
+
+.info{
+    color: blue; 
+    font-weight: bold; 
+    font-size: 35px;
+    text-shadow: -7px 15px 12px rgb(182, 182, 182);
+    margin-left: 35%
+}
+
+.info strong{
+    color: red;
+    font-size: 60px;
+}
+
+.mundo img{
+    margin-top: 10px;
+    height: 10%;
+    width: 55%;
+}
+
+.insertar-tarjeta button {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    background: linear-gradient(to right, #c4002b, #e6002f);
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+
+    /* Forma trapezoidal inclinada */
+    clip-path: polygon(7% 0%, 100% 0%, 100% 100%, 0% 100%);
+
+    border-radius: 55px 0px 0px 0px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
 
 /* Login */
+
+.login{
+    padding: 20px;
+}
 .pantalla-login{
-    padding: 60px 20px;
-    margin: 70px auto;
+    padding: 50px 20px;
+    margin: 60px auto;
     justify-items: center;
 }
 
@@ -230,10 +282,43 @@ html{
     font-size: 20px;
 }
 
-/* Para Ocultar */
-.menu{
-    display: none;
+/* Estilo para la pantalla de carga */
+.loader-container {
+    position: absolute;
+    top: 5%;
+    left: 26%;
+    width: 655px;
+    height: 500px;
+    border: 3px solid black;
+    border-radius: 8px;
+    background: #ffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
 }
+
+.loader-container.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.loader-spinner {
+    width: 60px;
+    height: 60px;
+    border: 7px solid #ddd;
+    border-top-color: #13a3a3;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
 
 
 
