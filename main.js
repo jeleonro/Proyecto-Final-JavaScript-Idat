@@ -9,7 +9,7 @@ let cuentaActual = null;
 
 //  ATRAPANDO ELEMENTOS
 const btnLogin = document.getElementById("ingresar");
-const btnSalir = document.getElementById("salir");
+const btnSalir = document.getElementById("btnsalir");
 const btnRetiro = document.getElementById("btnretiro");
 const btnConsulta = document.getElementById("btnconsulta");
 const btnDeposito = document.getElementById("btndeposito");
@@ -23,17 +23,18 @@ const consulta = document.getElementById("consulta");
 const deposito = document.getElementById("deposito");
 
 // Loader
-const loader = document.getElementById("loader","loader-tarjeta");
+function mostrarLoaderDe(seccionId, callback) {
+    const contenedor = document.getElementById(seccionId);
+    const loader = contenedor.querySelector(".loader-container");
 
-function mostrarLoader() {
     loader.classList.add("active");
-    return new Promise(resolve => {
-        setTimeout(() => {
-            loader.classList.remove("active");
-            resolve();
-        }, 1200);
-    });
+
+    setTimeout(() => {
+        loader.classList.remove("active");
+        callback();
+    }, 1200);
 }
+
 
 //  MOSTRAR SECCIONES
 function mostrarSeccion(seccion) {
@@ -63,14 +64,13 @@ function mostrarSeccion(seccion) {
 
 
 // INSERTAR TARJETA
-btnInsertarTarjeta.addEventListener("click", async () => {
-    await mostrarLoader();
-    mostrarSeccion("login");
+btnInsertarTarjeta.addEventListener("click", () => {
+    mostrarLoaderDe("cajero", () => mostrarSeccion("login"));
 });
 
 
 //  LOGIN: VALIDAR CLAVE
-btnLogin.addEventListener("click", async () => {
+btnLogin.addEventListener("click", () => {
     let clave = document.querySelector("#login input[type=password]").value;
 
     cuentaActual = cuentas.find(c => c.password === clave);
@@ -80,20 +80,17 @@ btnLogin.addEventListener("click", async () => {
         return;
     }
 
-    // Personalizar saludo
     document.querySelectorAll(".usuario h3").forEach(t => {
         t.innerText = `Hola ${cuentaActual.nombre},`
     });
 
-    await mostrarLoader();
-    mostrarSeccion("menu");
+    mostrarLoaderDe("login", () => mostrarSeccion("menu"));
 });
 
 
 //  RETIRO
-btnRetiro.addEventListener("click", async () => {
-    await mostrarLoader();
-    mostrarSeccion("retiro");
+btnRetiro.addEventListener("click", () => {
+    mostrarLoaderDe("menu", () => mostrarSeccion("retiro"));
 });
 
 
@@ -138,19 +135,20 @@ document.querySelectorAll(".monto-retiro").forEach(btn => {
 
 
 //  CONSULTA
-btnConsulta.addEventListener("click", async () => {
-    await mostrarLoader();
-
-    document.querySelector("#consulta input").value = cuentaActual.saldo;
-    mostrarSeccion("consulta");
+btnConsulta.addEventListener("click", () => {
+    mostrarLoaderDe("menu", () => {
+        document.querySelector("#consulta input").value = cuentaActual.saldo;
+        mostrarSeccion("consulta");
+    });
 });
+
 
 
 //  DEPÓSITO
-btnDeposito.addEventListener("click", async () => {
-    await mostrarLoader();
-    mostrarSeccion("deposito");
+btnDeposito.addEventListener("click", () => {
+    mostrarLoaderDe("menu", () => mostrarSeccion("deposito"));
 });
+
 
 document.querySelector("#deposito form").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -163,7 +161,7 @@ document.querySelector("#deposito form").addEventListener("submit", function (e)
         return;
     }
 
-    usuarioActual.saldo += monto;
+    cuentaActual.saldo += monto;
     alert(`Depósito exitoso. Nuevo saldo: S/ ${cuentaActual.saldo}`);
 
     input.value = "";
@@ -171,13 +169,19 @@ document.querySelector("#deposito form").addEventListener("submit", function (e)
 
 
 //  SALIR
-btnSalir.addEventListener("click", async () => {
-    cuentaActual = null;
+btnSalir.addEventListener("click", function () {
+    const loader = document.getElementById("loader");
 
-    await mostrarLoader();
-    mostrarSeccion("cajero");
+    document.getElementById("loader-img").src = "img/tarjeta.png";
+    document.getElementById("loader-text").textContent = "Sacando tarjeta...";
+
+    loader.classList.add("active");
+
+    setTimeout(() => {
+        loader.classList.remove("active");
+        mostrarSeccion("cajero");
+    }, 2300);
 });
-
 
 // Mostrar inicio al cargar
 mostrarSeccion("cajero");
